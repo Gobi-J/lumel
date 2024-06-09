@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React from "react";
 
-const Input = () => {
-
-    const [value, setValue] = useState(0)
+const Input = ({ inputValue, onchange, parent }) => {
   return (
-    <input type='number' value={value} />
-  )
-}
+    <input
+      type="number"
+      value={inputValue}
+      onChange={onchange}
+      disabled={!parent}
+    />
+  );
+};
 
-export default Input
+export default Input;

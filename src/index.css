@@ -1,0 +1,12 @@
+#root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+table,tr,td{
+    border:1px solid grey;
+    border-collapse: collapse;
+    padding: 4px;
+    text-align: right;
+}

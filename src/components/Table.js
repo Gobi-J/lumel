@@ -1,37 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Row from "./Row";
 
-import Data from "../data";
-import Input from "./Input";
-
-const Table = () => {
-  const [elec, setElec] = useState(0);
-  const [furni, setFurni] = useState(0);
-
-  const handlePercent = (item) => {
-        
-  }
-
+const Table = ({ data, handleValue }) => {
   return (
     <div className="table">
       <table>
         <thead>
-          <tr>Label</tr>
-          <tr>Value</tr>
-          <tr>Input</tr>
-          <tr>Allocation %</tr>
-          <tr>Allocation Val</tr>
-          <tr>Variance %</tr>
+          <td>Label</td>
+          <td>Value</td>
+          <td>Input</td>
+          <td>Allocation %</td>
+          <td>Allocate Val</td>
+          <td>Variance %</td>
         </thead>
         <tbody>
-          {Data.map((item) => {
-            <tr>
-              <td>{item.label}</td>
-              <td>{item.value}</td>
-              <Input />
-              <Button onClick={()=>handlePercent(item)} />
-              <Button onClick={} />
-            </tr>
-          })}
+          {data.map((item) => (
+            <>
+              <Row
+                key={item.id}
+                item={item}
+                handleValue={handleValue}
+                parent={null}
+              />
+              {item.children &&
+                item.children.length > 0 &&
+                item.children.map((child) => (
+                  <Row
+                    key={child.id}
+                    item={child}
+                    handleValue={handleValue}
+                    parent={item.id}
+                  />
+                ))}
+            </>
+          ))}
         </tbody>
       </table>
     </div>
